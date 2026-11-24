@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#bfe3ff">
+  <title>天台怼怼车 · Rooftop Bumpers</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%97%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="stage">
+    <canvas id="scene" aria-label="游戏画面"></canvas>
+  </div>
+
+  <div id="danger" aria-hidden="true"></div>
+
+  <div id="hud">
+    <section id="me" class="panel" aria-label="我的车">
+      <div class="me-top">
+        <span id="me-dot" class="dot"></span>
+        <span id="me-name">…</span>
+        <span id="me-level" class="badge">Lv1</span>
+      </div>
+      <div class="me-grid">
+        <span>体重</span><b id="me-weight">1.00 吨</b>
+        <span>存活</span><b id="me-time">0:00</b>
+        <span>怼下</span><b id="me-kos">0 人</b>
+      </div>
+      <div class="bar" aria-hidden="true"><i id="me-bar"></i></div>
+      <div id="me-next" class="small">击落一辆车升级</div>
+    </section>
+
+    <section id="board" class="panel" aria-label="存活榜">
+      <h2>👑 存活榜</h2>
+      <ol id="board-list"></ol>
+      <div id="online" class="small"></div>
+    </section>
+
+    <section id="countries" class="panel" aria-label="国家积分榜">
+      <h2>🌍 国家积分榜</h2>
+      <div id="my-country"></div>
+      <ol id="country-list"></ol>
+      <div class="small">北京时间每天 00:00 清零</div>
+    </section>
+
+    <div id="feed" aria-live="polite"></div>
+    <div id="toast" aria-live="polite"></div>
+    <div id="hint"></div>
+    <div id="status" hidden></div>
+    <button id="mute" type="button" title="声音开关" aria-label="声音开关">🔊</button>
+    <details id="diagnostics">
+      <summary id="diagnostics-summary">连接诊断</summary>
+      <pre id="diagnostics-data"></pre>
+    </details>
+  </div>
+
+  <a id="promotion" href="https://apps.apple.com/app/id6790333233" target="_blank" rel="noopener noreferrer" hidden>
+    <span class="promo-icon" aria-hidden="true">🎵</span>
+    <span><b class="promo-name">Tinyo Music</b><small class="promo-description">发现喜欢的音乐</small></span>
+    <span class="promo-store">App Store ↗</span>
+  </a>
+
+  <div id="joy" hidden><div id="joy-knob"></div></div>
+
+  <div id="join">
+    <div class="card" role="dialog" aria-modal="true" aria-labelledby="join-title">
+      <div class="big-emoji">🌍🚗</div>
+      <h1 id="join-title">代表你的国家出战</h1>
+      <p>把真人对手撞下天台，为国家赢得 1 分！</p>
+      <label for="join-name">昵称（可选）</label>
+      <input id="join-name" maxlength="24" autocomplete="nickname" placeholder="留空随机取名">
+      <label for="country-select">选择代表国家或地区</label>
+      <select id="country-select"></select>
+      <button id="join-button" type="button">开始对撞！</button>
+      <p class="small">击落升级，最高 20 级 · 掉落后自动重返战场</p>
+    </div>
+  </div>
+
+  <div id="death" hidden>
+    <div class="card" role="dialog" aria-modal="true" aria-labelledby="death-title">
+      <div class="big-emoji" id="death-emoji">😵</div>
+      <h1 id="death-title">被怼下楼啦！</h1>
+      <p id="death-by"></p>
+      <div class="stats">
+        <div><span>存活</span><b id="d-time">0:00</b></div>
+        <div><span>最高</span><b id="d-level">Lv1</b></div>
+        <div><span>怼下</span><b id="d-kos">0 人</b></div>
+      </div>
+      <label class="name-row">名字 <input id="name-input" maxlength="12" autocomplete="off" spellcheck="false"></label>
+      <button id="again" type="button">再来一次！</button>
+      <p class="small">按 Enter 也可以 · 重来会从 1 级（1.00 吨）开始</p>
+    </div>
+  </div>
+
+  <script type="module" src="game.js?build=__BUILD__"></script>
+</body>
+</html>

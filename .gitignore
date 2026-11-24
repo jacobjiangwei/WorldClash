@@ -1,0 +1,4 @@
+.copilot-azure/
+.playwright-mcp/
+rooftop-bumpers/data/
+rooftop-bumpers/node_modules/
