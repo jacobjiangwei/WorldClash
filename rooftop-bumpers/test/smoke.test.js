@@ -68,7 +68,7 @@ try {
     assert.equal(r.status, 200);
     assert.match(r.headers.get('content-security-policy'), /default-src 'self'/);
     const html = await r.text();
-    assert.match(html, /天台怼怼车/);
+    assert.match(html, /World Clash/);
     const version = await (await fetch(base + '/version')).json();
     assert.match(version.build, /^[a-f0-9]{10}$/);
     assert.equal(r.headers.get('x-worldclash-build'), version.build);

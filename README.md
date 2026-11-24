@@ -1,6 +1,6 @@
-# WorldClash
+# World Clash 🌍🚗💨
 
-Game for fun — 天台怼怼车（`rooftop-bumpers/`）。
+Game for fun — **World Clash**（`rooftop-bumpers/`）。
 
 👉 **Live Demo**: <https://app-worldclash-dev-39ca.azurewebsites.net/> — *Feel free to try it, very fun!*
 

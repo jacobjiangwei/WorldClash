@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// 天台怼怼车 — 游戏服务器。
+// World Clash — 游戏服务器。
 // 同一个端口既提供网页（public/），也提供 WebSocket 游戏连接（/ws）。
 // 运行：npm ci && node server.js（Node.js 18+）
 
@@ -450,7 +450,7 @@ server.on('error', (err) => {
 });
 server.listen(PORT, HOST, () => {
   const port = server.address().port;
-  console.log('\n🚗💨 天台怼怼车 服务器已启动');
+  console.log('\n🌍🚗💨 World Clash 服务器已启动');
   console.log(`   本机打开:     http://localhost:${port}`);
   for (const addrs of Object.values(os.networkInterfaces())) {
     for (const a of addrs || []) {

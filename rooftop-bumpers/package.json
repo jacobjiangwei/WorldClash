@@ -1,8 +1,8 @@
 {
-  "name": "rooftop-bumpers",
+  "name": "world-clash",
   "version": "1.0.0",
   "private": true,
-  "description": "天台怼怼车：打开网页就加入的多人天台碰碰车（Node.js 游戏服务器 + three.js 卡通画面）",
+  "description": "World Clash：10 车天台碰碰车混战 + 全球国家积分实时排行榜（Node.js + three.js）",
   "type": "module",
   "main": "server.js",
   "scripts": {
