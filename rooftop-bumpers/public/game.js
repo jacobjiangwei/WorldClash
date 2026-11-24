@@ -1054,7 +1054,9 @@ function setStatus(text) {
 
 let hintTimer = 0;
 function showHint() {
-  ui.hint.textContent = isTouch ? '按住屏幕任意处拖动 = 方向盘 · 把别人怼下楼！' : 'WASD / 方向键 开车 · 把别人怼下楼，自己别掉下去！';
+  ui.hint.textContent = isTouch
+    ? 'Drag anywhere to steer · 按住屏幕拖动开车，把对手撞下楼！'
+    : 'WASD / Arrow Keys to drive · 把对手撞下楼，小心边缘！';
   ui.hint.classList.remove('gone');
   clearTimeout(hintTimer);
   hintTimer = setTimeout(hideHint, 12000);
@@ -1140,8 +1142,8 @@ function updateBoard() {
   for (const p of state.roster.values()) if (!p.bot) humans++;
   const bots = state.roster.size - humans;
   ui.online.textContent = state.soloActive
-    ? `${state.roster.size} 车混战 · 积分联网同步${state.rtt ? ` (${Math.round(state.rtt)}ms)` : ''}`
-    : `在线 ${humans} 人${bots ? ` · 机器人 ${bots}` : ''}${state.rtt ? ` · 延迟 ${Math.round(state.rtt)}ms` : ''}`;
+    ? `${state.roster.size}-Car Brawl · Live Score Sync / 10 车混战 · 积分联网`
+    : `Online ${humans}${bots ? ` · AI ${bots}` : ''}${state.rtt ? ` · ${Math.round(state.rtt)}ms` : ''}`;
 }
 
 let hudAt = 0;
@@ -1160,15 +1162,15 @@ function updateHud(now) {
   if (me && !me.falling) {
     const cfg = state.cfg;
     ui.meLevel.textContent = `Lv${me.level}`;
-    ui.meWeight.textContent = `${weightOf(me.level).toFixed(2)} 吨`;
+    ui.meWeight.textContent = `${weightOf(me.level).toFixed(2)} t`;
     ui.meTime.textContent = fmtTime(me.alive);
-    ui.meKos.textContent = `${me.kos} 人`;
+    ui.meKos.textContent = `${me.kos}`;
     if (me.level >= cfg.maxLevel) {
       ui.meBar.style.transform = 'scaleX(1)';
-      ui.meNext.textContent = '满级！最重最稳，也最难刹车';
+      ui.meNext.textContent = 'MAX LEVEL! Heavy & unstoppable · 满级最重最猛';
     } else {
       ui.meBar.style.transform = `scaleX(${(me.level - 1) / (cfg.maxLevel - 1)})`;
-      ui.meNext.textContent = `击落一辆车升级（+${Math.round(cfg.massPerLevel * 1000)} kg）`;
+      ui.meNext.textContent = `KO +1 Lv (+${Math.round(cfg.massPerLevel * 1000)} kg) · 击落升级`;
     }
   }
   if (now - boardAt > 0.5) {
@@ -1202,17 +1204,17 @@ function renderScores(list) {
   latestScores = list;
   const rows = list.slice(0, 5).map(([code, score]) => {
     const li = document.createElement('li');
-    li.textContent = `${countryFlag(code)} ${countryName(code)} · ${score} 分`;
+    li.textContent = `${countryFlag(code)} ${countryName(code)} · ${score} pts`;
     return li;
   });
   if (!rows.length) {
     const li = document.createElement('li');
-    li.textContent = '今天还没有积分';
+    li.textContent = 'No scores today yet · 今日暂无积分';
     rows.push(li);
   }
   ui.countryList.replaceChildren(...rows);
   const mine = list.find(([code]) => code === state.country);
-  ui.myCountry.textContent = `${countryFlag(state.country)} ${countryName(state.country)} · ${mine ? mine[1] : 0} 分`;
+  ui.myCountry.textContent = `${countryFlag(state.country)} ${countryName(state.country)} · ${mine ? mine[1] : 0} pts`;
 }
 
 function reportKnockout() {
@@ -1923,8 +1925,8 @@ function frame(t) {
 requestAnimationFrame(frame);
 const featured = new Set(FEATURED_COUNTRIES);
 for (const [label, codes] of [
-  ['常见国家', FEATURED_COUNTRIES],
-  ['其他国家和地区', COUNTRY_CODES.filter((code) => !featured.has(code)).sort((a, b) => countryName(a).localeCompare(countryName(b), 'zh-CN'))],
+  ['Popular · 常见国家与地区', FEATURED_COUNTRIES],
+  ['All Countries & Regions · 全部国家与地区', COUNTRY_CODES.filter((code) => !featured.has(code)).sort((a, b) => countryName(a).localeCompare(countryName(b), 'en'))],
 ]) {
   const group = document.createElement('optgroup');
   group.label = label;

@@ -1,6 +1,10 @@
 # World Clash 🌍🚗💨
 
-10 车天台卡通碰碰车大混战：**选择代表的国家或地区后加入，为国家赢取全球排行榜积分**。
+👉 **Live Demo**: <https://app-worldclash-dev-39ca.azurewebsites.net/> — *Feel free to try it, very fun!*
+
+![World Clash Gameplay](./public/screenshot.png)
+
+10-Car Rooftop Bumper-Car Brawl with Live Global Country Leaderboard · **10 车天台卡通碰碰车大混战：选择代表的国家或地区后加入，为国家赢取全球排行榜积分**。
 在一栋高楼楼顶的露天停车场（没有护栏）互相碰撞，把别人怼下楼；击落越多，车越重。
 
 ## 玩法

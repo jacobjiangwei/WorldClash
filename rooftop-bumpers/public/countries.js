@@ -4,6 +4,12 @@ export const FEATURED_COUNTRIES = [
   'CN', 'US', 'GB', 'FR', 'DE', 'IT', 'ES', 'CA', 'AU', 'JP',
   'KR', 'IN', 'BR', 'MX', 'AR', 'RU', 'SA', 'TR', 'ZA', 'SG',
 ];
-const names = new Intl.DisplayNames(['zh-CN'], { type: 'region' });
-export const countryName = (code) => names.of(code) || code;
+const namesEn = new Intl.DisplayNames(['en'], { type: 'region' });
+const namesZh = new Intl.DisplayNames(['zh-CN'], { type: 'region' });
+export const countryName = (code) => {
+  const en = namesEn.of(code);
+  const zh = namesZh.of(code);
+  if (en && zh && en !== zh) return `${en} · ${zh}`;
+  return en || zh || code;
+};
 export const countryFlag = (code) => [...code].map((c) => String.fromCodePoint(c.charCodeAt(0) + 127397)).join('');

@@ -16,41 +16,41 @@
   <div id="danger" aria-hidden="true"></div>
 
   <div id="hud">
-    <section id="me" class="panel" aria-label="我的车">
+    <section id="me" class="panel" aria-label="My Car · 我的车">
       <div class="me-top">
         <span id="me-dot" class="dot"></span>
         <span id="me-name">…</span>
         <span id="me-level" class="badge">Lv1</span>
       </div>
       <div class="me-grid">
-        <span>体重</span><b id="me-weight">1.00 吨</b>
-        <span>存活</span><b id="me-time">0:00</b>
-        <span>怼下</span><b id="me-kos">0 人</b>
+        <span>Mass · 体重</span><b id="me-weight">1.00 t</b>
+        <span>Time · 存活</span><b id="me-time">0:00</b>
+        <span>KOs · 击落</span><b id="me-kos">0</b>
       </div>
       <div class="bar" aria-hidden="true"><i id="me-bar"></i></div>
-      <div id="me-next" class="small">击落一辆车升级</div>
+      <div id="me-next" class="small">KO a car to level up · 击落升级</div>
     </section>
 
-    <section id="board" class="panel" aria-label="存活榜">
-      <h2>👑 存活榜</h2>
+    <section id="board" class="panel" aria-label="Arena Top · 存活榜">
+      <h2>👑 Arena Top · 存活榜</h2>
       <ol id="board-list"></ol>
       <div id="online" class="small"></div>
     </section>
 
-    <section id="countries" class="panel" aria-label="国家积分榜">
-      <h2>🌍 国家积分榜</h2>
+    <section id="countries" class="panel" aria-label="World Leaderboard · 国家积分榜">
+      <h2>🌍 World Clash · 国家积分榜</h2>
       <div id="my-country"></div>
       <ol id="country-list"></ol>
-      <div class="small">北京时间每天 00:00 清零</div>
+      <div class="small">Daily reset 00:00 UTC+8 · 北京时间清零</div>
     </section>
 
     <div id="feed" aria-live="polite"></div>
     <div id="toast" aria-live="polite"></div>
     <div id="hint"></div>
     <div id="status" hidden></div>
-    <button id="mute" type="button" title="声音开关" aria-label="声音开关">🔊</button>
+    <button id="mute" type="button" title="Sound · 声音开关" aria-label="Sound · 声音开关">🔊</button>
     <details id="diagnostics">
-      <summary id="diagnostics-summary">连接诊断</summary>
+      <summary id="diagnostics-summary">Diagnostics · 诊断</summary>
       <pre id="diagnostics-data"></pre>
     </details>
   </div>
@@ -67,13 +67,13 @@
     <div class="card" role="dialog" aria-modal="true" aria-labelledby="join-title">
       <div class="big-emoji">🌍🚗</div>
       <h1 id="join-title">World Clash</h1>
-      <p>代表你的国家出战 · 10 车天台大混战，把对手撞下天台为国加分！</p>
-      <label for="join-name">昵称（可选）</label>
-      <input id="join-name" maxlength="24" autocomplete="nickname" placeholder="留空随机取名">
-      <label for="country-select">选择代表国家或地区</label>
+      <p>10-Car Rooftop Brawl · Fight for Your Country!<br>代表你的国家出战 · 10 车天台大混战，撞飞对手为国加分！</p>
+      <label for="join-name">Nickname (Optional) · 昵称（可选）</label>
+      <input id="join-name" maxlength="24" autocomplete="nickname" placeholder="Random if empty · 留空随机取名">
+      <label for="country-select">Country / Region · 选择国家或地区</label>
       <select id="country-select"></select>
-      <button id="join-button" type="button">开始对撞！</button>
-      <p class="small">击落升级，最高 20 级 · 掉落后自动重返战场</p>
+      <button id="join-button" type="button">START CLASH! · 开始对撞！</button>
+      <p class="small">KO to Level Up (Max Lv20) · Auto Respawn / 击落升级，掉落自动重返</p>
     </div>
   </div>
 
